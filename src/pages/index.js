@@ -3,9 +3,9 @@ import carImage from "../assets/red-car-background.png"; // Make sure the path i
 
 export default function Home() {
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", margin: 0, padding: 0 }}>
+    <div style={{ fontFamily: "Arial, sans-serif", margin: 0, padding: 0, boxSizing: "border-box" }}>
 
-      {/* Hero Section with header + services */}
+      {/* Hero Section */}
       <header
         style={{
           position: "relative",
@@ -19,7 +19,7 @@ export default function Home() {
           justifyContent: "center",
           alignItems: "center",
           textAlign: "center",
-          margin: 0
+          margin: 0,
         }}
       >
         {/* Transparent overlay */}
@@ -30,27 +30,26 @@ export default function Home() {
           width: "100%",
           height: "100%",
           backgroundColor: "rgba(0, 0, 0, 0.5)",
-          zIndex: 1
+          zIndex: 1,
         }}></div>
 
         {/* Content inside overlay */}
         <div style={{ position: "relative", zIndex: 2, padding: "0 20px" }}>
-          <h1 style={{ fontSize: "4rem", fontWeight: "bold", marginBottom: "20px" }}>
+          <h1 style={{ fontSize: "4rem", fontWeight: "bold", marginBottom: "40px" }}>
             Jones Precision Paint
           </h1>
-          <p style={{ fontSize: "1.5rem", marginBottom: "40px" }}>
+          <p style={{ fontSize: "1.8rem", marginTop: "20px", marginBottom: "60px" }}>
             Expert Auto Body & Car Painting Services
           </p>
 
-          {/* Services overlayed on image */}
+          {/* Services cascading bullet points */}
           <ul style={{
-            listStyle: "none",
-            padding: 0,
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            gap: "20px",
-            fontSize: "1.1rem"
+            listStyleType: "disc",
+            textAlign: "left",
+            display: "inline-block",
+            paddingLeft: "20px",
+            fontSize: "1.2rem",
+            lineHeight: "2rem",
           }}>
             <li>Full Car Repainting</li>
             <li>Scratch & Dent Repair</li>
@@ -61,7 +60,7 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Quote Request Section on white background */}
+      {/* Quote Request Section */}
       <section style={{ padding: "80px 20px", backgroundColor: "#fff" }}>
         <h2 style={{ textAlign: "center", marginBottom: "40px" }}>Request a Free Quote</h2>
         <form
