@@ -1,11 +1,11 @@
 import React from "react";
-import carImage from "../assets/red-car-background.png"; // Make sure this path matches your folder
+import carImage from "../assets/red-car-background.png"; // Make sure the path is correct
 
 export default function Home() {
   return (
-    <div style={{ fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>
+    <div style={{ fontFamily: "Arial, sans-serif", margin: 0, padding: 0 }}>
 
-      {/* Hero / Landing Section */}
+      {/* Hero Section with header + services */}
       <header
         style={{
           position: "relative",
@@ -18,46 +18,52 @@ export default function Home() {
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
-          textAlign: "center"
+          textAlign: "center",
+          margin: 0
         }}
       >
-        {/* Semi-transparent overlay */}
+        {/* Transparent overlay */}
         <div style={{
           position: "absolute",
           top: 0,
           left: 0,
           width: "100%",
           height: "100%",
-          backgroundColor: "rgba(0, 0, 0, 0.5)"
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          zIndex: 1
         }}></div>
 
-        {/* Header content */}
-        <div style={{ position: "relative", zIndex: 2 }}>
-          <h1 style={{ fontSize: "4rem", fontWeight: "bold" }}>Jones Precision Paint</h1>
-          <p style={{ fontSize: "1.5rem", marginTop: "20px" }}>Expert Auto Body & Car Painting Services</p>
+        {/* Content inside overlay */}
+        <div style={{ position: "relative", zIndex: 2, padding: "0 20px" }}>
+          <h1 style={{ fontSize: "4rem", fontWeight: "bold", marginBottom: "20px" }}>
+            Jones Precision Paint
+          </h1>
+          <p style={{ fontSize: "1.5rem", marginBottom: "40px" }}>
+            Expert Auto Body & Car Painting Services
+          </p>
+
+          {/* Services overlayed on image */}
+          <ul style={{
+            listStyle: "none",
+            padding: 0,
+            display: "flex",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            gap: "20px",
+            fontSize: "1.1rem"
+          }}>
+            <li>Full Car Repainting</li>
+            <li>Scratch & Dent Repair</li>
+            <li>Bumper Repair & Refinishing</li>
+            <li>Custom Color Matching</li>
+            <li>Collision Repair Painting</li>
+          </ul>
         </div>
       </header>
 
-      {/* Services Section */}
-      <section style={{ padding: "80px 20px", backgroundColor: "#f5f5f5" }}>
-        <h2 style={{ textAlign: "center" }}>Our Services</h2>
-        <ul style={{
-          maxWidth: "600px",
-          margin: "auto",
-          listStyle: "none",
-          padding: 0
-        }}>
-          <li style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>Full Car Repainting</li>
-          <li style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>Scratch & Dent Repair</li>
-          <li style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>Bumper Repair & Refinishing</li>
-          <li style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>Custom Color Matching</li>
-          <li style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>Collision Repair Painting</li>
-        </ul>
-      </section>
-
-      {/* Quote Request Form */}
-      <section style={{ padding: "80px 20px" }}>
-        <h2 style={{ textAlign: "center" }}>Request a Free Quote</h2>
+      {/* Quote Request Section on white background */}
+      <section style={{ padding: "80px 20px", backgroundColor: "#fff" }}>
+        <h2 style={{ textAlign: "center", marginBottom: "40px" }}>Request a Free Quote</h2>
         <form
           name="quote"
           method="POST"
