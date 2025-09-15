@@ -1,22 +1,45 @@
 import React from "react";
+import carImage from ".src/assets/red-car-background.png"; // Make sure this path matches your folder
 
 export default function Home() {
   return (
     <div style={{ fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>
-      
+
       {/* Hero / Landing Section */}
-      <header style={{
-        textAlign: "center",
-        backgroundColor: "#222",
-        color: "#fff",
-        padding: "60px 20px"
-      }}>
-        <h1><strong>Jones Precision Paint</strong></h1>
-        <p>Expert Auto Body & Car Painting Services</p>
+      <header
+        style={{
+          position: "relative",
+          height: "100vh",
+          backgroundImage: `url(${carImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          color: "#fff",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center"
+        }}
+      >
+        {/* Semi-transparent overlay */}
+        <div style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(0, 0, 0, 0.5)"
+        }}></div>
+
+        {/* Header content */}
+        <div style={{ position: "relative", zIndex: 2 }}>
+          <h1 style={{ fontSize: "4rem", fontWeight: "bold" }}>Jones Precision Paint</h1>
+          <p style={{ fontSize: "1.5rem", marginTop: "20px" }}>Expert Auto Body & Car Painting Services</p>
+        </div>
       </header>
 
       {/* Services Section */}
-      <section style={{ padding: "40px 20px", backgroundColor: "#f5f5f5" }}>
+      <section style={{ padding: "80px 20px", backgroundColor: "#f5f5f5" }}>
         <h2 style={{ textAlign: "center" }}>Our Services</h2>
         <ul style={{
           maxWidth: "600px",
@@ -33,7 +56,7 @@ export default function Home() {
       </section>
 
       {/* Quote Request Form */}
-      <section style={{ padding: "40px 20px" }}>
+      <section style={{ padding: "80px 20px" }}>
         <h2 style={{ textAlign: "center" }}>Request a Free Quote</h2>
         <form
           name="quote"
