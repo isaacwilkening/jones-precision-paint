@@ -1,148 +1,84 @@
-import * as React from 'react';
+import React from "react";
 
-import AttributeGrid from '../components/AttributeGrid';
-import Container from '../components/Container';
-import Hero from '../components/Hero';
-import BlogPreviewGrid from '../components/BlogPreviewGrid';
-import Highlight from '../components/Highlight';
-import Layout from '../components/Layout/Layout';
-import ProductCollectionGrid from '../components/ProductCollectionGrid';
-import ProductCardGrid from '../components/ProductCardGrid';
-import Quote from '../components/Quote';
-import Title from '../components/Title';
-
-import { generateMockBlogData, generateMockProductData } from '../helpers/mock';
-
-import * as styles from './index.module.css';
-import { Link, navigate } from 'gatsby';
-import { toOptimizedImage } from '../helpers/general';
-
-const IndexPage = () => {
-  const newArrivals = generateMockProductData(3, 'shirt');
-  const blogData = generateMockBlogData(3);
-
-  const goToShop = () => {
-    navigate('/shop');
-  };
-
+export default function Home() {
   return (
-    <Layout disablePaddingBottom>
-      {/* Hero Container */}
-      <Hero
-        maxWidth={'500px'}
-        image={'/banner1.png'}
-        title={'Essentials for a cold winter'}
-        subtitle={'Discover Autumn Winter 2021'}
-        ctaText={'shop now'}
-        ctaAction={goToShop}
-      />
+    <div style={{ fontFamily: "Arial, sans-serif", lineHeight: 1.5 }}>
+      
+      {/* Hero / Landing Section */}
+      <header style={{
+        textAlign: "center",
+        backgroundColor: "#222",
+        color: "#fff",
+        padding: "60px 20px"
+      }}>
+        <h1><strong>Jones Precision Paint</strong></h1>
+        <p>Expert Auto Body & Car Painting Services</p>
+      </header>
 
-      {/* Message Container */}
-      <div className={styles.messageContainer}>
-        <p>
-          This is a demonstration of the Sydney theme for verse by{' '}
-          <span className={styles.gold}>matter design.</span>
-        </p>
-        <p>
-          wear by <span className={styles.gold}>sunspel</span> and{' '}
-          <span className={styles.gold}>scotch&soda</span>
-        </p>
-      </div>
+      {/* Services Section */}
+      <section style={{ padding: "40px 20px", backgroundColor: "#f5f5f5" }}>
+        <h2 style={{ textAlign: "center" }}>Our Services</h2>
+        <ul style={{
+          maxWidth: "600px",
+          margin: "auto",
+          listStyle: "none",
+          padding: 0
+        }}>
+          <li style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>Full Car Repainting</li>
+          <li style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>Scratch & Dent Repair</li>
+          <li style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>Bumper Repair & Refinishing</li>
+          <li style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>Custom Color Matching</li>
+          <li style={{ padding: "10px", borderBottom: "1px solid #ccc" }}>Collision Repair Painting</li>
+        </ul>
+      </section>
 
-      {/* Collection Container */}
-      <div className={styles.collectionContainer}>
-        <Container size={'large'}>
-          <Title name={'New Collection'} />
-          <ProductCollectionGrid />
-        </Container>
-      </div>
+      {/* Quote Request Form */}
+      <section style={{ padding: "40px 20px" }}>
+        <h2 style={{ textAlign: "center" }}>Request a Free Quote</h2>
+        <form
+          name="quote"
+          method="POST"
+          data-netlify="true"
+          style={{ maxWidth: "500px", margin: "auto", display: "flex", flexDirection: "column" }}
+        >
+          <label style={{ marginTop: "10px", fontWeight: "bold" }}>Your Name:</label>
+          <input type="text" name="name" required style={{ padding: "8px", marginTop: "5px", borderRadius: "4px" }} />
 
-      {/* New Arrivals */}
-      <div className={styles.newArrivalsContainer}>
-        <Container>
-          <Title name={'New Arrivals'} link={'/shop'} textLink={'view all'} />
-          <ProductCardGrid
-            spacing={true}
-            showSlider
-            height={480}
-            columns={3}
-            data={newArrivals}
-          />
-        </Container>
-      </div>
+          <label style={{ marginTop: "10px", fontWeight: "bold" }}>Email:</label>
+          <input type="email" name="email" required style={{ padding: "8px", marginTop: "5px", borderRadius: "4px" }} />
 
-      {/* Highlight  */}
-      <div className={styles.highlightContainer}>
-        <Container size={'large'} fullMobile>
-          <Highlight
-            image={'/highlight.png'}
-            altImage={'highlight image'}
-            miniImage={'/highlightmin.png'}
-            miniImageAlt={'mini highlight image'}
-            title={'Luxury Knitwear'}
-            description={`This soft lambswool jumper is knitted in Scotland, using yarn from one of the world's oldest spinners based in Fife`}
-            textLink={'shop now'}
-            link={'/shop'}
-          />
-        </Container>
-      </div>
+          <label style={{ marginTop: "10px", fontWeight: "bold" }}>Car Make/Model:</label>
+          <input type="text" name="car" required style={{ padding: "8px", marginTop: "5px", borderRadius: "4px" }} />
 
-      {/* Promotion */}
-      <div className={styles.promotionContainer}>
-        <Hero image={toOptimizedImage('/banner2.png')} title={`-50% off \n All Essentials`} />
-        <div className={styles.linkContainers}>
-          <Link to={'/shop'}>WOMAN</Link>
-          <Link to={'/shop'}>MAN</Link>
-        </div>
-      </div>
+          <label style={{ marginTop: "10px", fontWeight: "bold" }}>Service Needed:</label>
+          <select name="service" required style={{ padding: "8px", marginTop: "5px", borderRadius: "4px" }}>
+            <option value="full-paint">Full Car Repainting</option>
+            <option value="scratch-dent">Scratch & Dent Repair</option>
+            <option value="bumper">Bumper Repair</option>
+            <option value="custom-color">Custom Color Match</option>
+            <option value="collision">Collision Repair Painting</option>
+          </select>
 
-      {/* Quote */}
-      <Quote
-        bgColor={'var(--standard-light-grey)'}
-        title={'about Sydney'}
-        quote={
-          '“We believe in two things: the pursuit of quality in everything we do, and looking after one another. Everything else should take care of itself.”'
-        }
-      />
+          <label style={{ marginTop: "10px", fontWeight: "bold" }}>Additional Details:</label>
+          <textarea name="message" style={{ padding: "8px", marginTop: "5px", borderRadius: "4px" }} />
 
-      {/* Blog Grid */}
-      <div className={styles.blogsContainer}>
-        <Container size={'large'}>
-          <Title name={'Journal'} subtitle={'Notes on life and style'} />
-          <BlogPreviewGrid data={blogData} />
-        </Container>
-      </div>
+          <button type="submit" style={{
+            marginTop: "20px",
+            padding: "12px",
+            backgroundColor: "#e63946",
+            color: "#fff",
+            border: "none",
+            borderRadius: "6px",
+            cursor: "pointer"
+          }}>
+            Get My Quote
+          </button>
+        </form>
+      </section>
 
-      {/* Promotion */}
-      <div className={styles.sustainableContainer}>
-        <Hero
-          image={toOptimizedImage('/banner3.png')}
-          title={'We are Sustainable'}
-          subtitle={
-            'From caring for our land to supporting our people, discover the steps we’re taking to do more for the world around us.'
-          }
-          ctaText={'read more'}
-          maxWidth={'660px'}
-          ctaStyle={styles.ctaCustomButton}
-        />
-      </div>
-
-      {/* Social Media */}
-      <div className={styles.socialContainer}>
-        <Title
-          name={'Styled by You'}
-          subtitle={'Tag @sydney to be featured.'}
-        />
-        <div className={styles.socialContentGrid}>
-          <img src={toOptimizedImage(`/social/socialMedia1.png`)} alt={'social media 1'} />
-          <img src={toOptimizedImage(`/social/socialMedia2.png`)} alt={'social media 2'} />
-          <img src={toOptimizedImage(`/social/socialMedia3.png`)} alt={'social media 3'} />
-          <img src={toOptimizedImage(`/social/socialMedia4.png`)} alt={'social media 4'} />
-        </div>
-      </div>
-      <AttributeGrid />
-    </Layout>
+      <footer style={{ textAlign: "center", padding: "20px", backgroundColor: "#222", color: "#fff" }}>
+        <p>© 2025 Jones Precision Paint</p>
+      </footer>
+    </div>
   );
-};
-
-export default IndexPage;
+}
