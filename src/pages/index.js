@@ -1,5 +1,5 @@
 import React from "react";
-import carImage from ".src/assets/red-car-background.png"; // Make sure this path matches your folder
+import carImage from "../assets/red-car-background.png"; // Make sure this path matches your folder
 
 export default function Home() {
   return (
